@@ -1,5 +1,5 @@
 """
-WSGI config for mysite project.
+Web Server Gateway Interface config for mysite project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+"""Django's command-line utility for administrative tasks.
+'django-admin startproject dir' - This will initialize the project for development.
+'python manage.py runserver' - This will start the server
+"""
 import os
 import sys
 
