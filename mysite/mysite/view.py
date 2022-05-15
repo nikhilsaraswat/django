@@ -17,7 +17,7 @@ def analyze(request):
     extraspaceremover = request.POST.get('extraspaceremover','off')
     newlineremover = request.POST.get('newlineremover','off')
     charcount = request.POST.get('charcount','off')
-    print(removepunc)
+
     # Check which checkbox is on
     if removepunc == "on":
         punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
