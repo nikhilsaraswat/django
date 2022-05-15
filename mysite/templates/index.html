@@ -5,7 +5,15 @@
     <title>Template is working</title>
 </head>
 <body>
+    <h1>Welcome to the text analyzer. Enter your text below.</h1>
+<!--    sending get request to remove punc-->
+    <form action = '/removepunc' method="get">
+        <textarea name = 'text' style="width: 839px; height: 229px;"></textarea><br>
+<!--        to submit the form-->
+        <button type="submit">Analyze text</button>
+    </form>
     mai ek masum si template hun
-    {{name}} is from {{place}}
+<!--    parsing parameter from the view-->
+    {{name}} is from {{place}} 
 </body>
 </html>
