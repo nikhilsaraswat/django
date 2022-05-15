@@ -10,14 +10,14 @@ def index(request):
     # return HttpResponse("hello") # Can pass text, html as inline
 
 def analyze(request):
-    djtext = request.GET.get('text','default') # get request from form in index.html first value you wants to get and second default in case no value is passed.
+    djtext = request.POST.get('text','default') # get request from form in index.html first value you wants to get and second default in case no value is passed.
     # Checking checkbox values
-    removepunc = request.GET.get('removepunc','off')
-    fullcaps = request.GET.get('fullcaps','off')
-    extraspaceremover = request.GET.get('extraspaceremover','off')
-    charcount = request.GET.get('charcount','off')
+    removepunc = request.POST.get('removepunc','off')
+    fullcaps = request.POST.get('fullcaps','off')
+    extraspaceremover = request.POST.get('extraspaceremover','off')
+    newlineremover = request.POST.get('newlineremover','off')
+    charcount = request.POST.get('charcount','off')
     print(removepunc)
-    # Check which checkbox is on
     # Check which checkbox is on
     if removepunc == "on":
         punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
@@ -44,6 +44,15 @@ def analyze(request):
         params = {'purpose': 'Removed Extra spaces', 'analyzed_text': analyzed}
         # Analyze the text
         djtext = analyzed
+    if (newlineremover == "on"):
+        analyzed = ""
+        for char in djtext:
+            if char != "\n" and char != "\r":
+                analyzed = analyzed + char
+
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        # Analyze the text
+        djtext = analyzed
     if(charcount == 'on'):
         analyzed = ""
         i = 0
@@ -52,18 +61,6 @@ def analyze(request):
                 i += 1
             analyzed = analyzed + char
         params = {'purpose':f'Count Characters {i}','analyzed_text': analyzed}
-    if (removepunc == 'off' and fullcaps == 'off' and extraspaceremover == 'off' and charcount == 'off'):
-        return HttpResponse("Error")
-    return render(request, 'analyze.html', params)
-
-# def capfirst(request):
-#     return HttpResponse("capitalize first")
-#
-# def newlineremove(request):
-#     return HttpResponse("about us")
-#
-# def spaceremove(request):
-#     return HttpResponse("new line remove <a href='/'>back</a>")
-#
-# def charcount(request):
-#     return HttpResponse("char count")
+    if (removepunc == 'off' and fullcaps == 'off' and extraspaceremover == 'off' and newlineremover == "off" and charcount == 'off'):
+        return HttpResponse("Error") # Can pass text, html as inline
+    return render(request, 'analyze.html', params) # Can pass html file
