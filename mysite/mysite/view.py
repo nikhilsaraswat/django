@@ -5,5 +5,17 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("hello") # Can pass text, html
 
-def about(request):
+def removepunc(request):
+    return HttpResponse("remove punc")
+
+def capfirst(request):
+    return HttpResponse("capitalize first")
+
+def newlineremove(request):
     return HttpResponse("about us")
+
+def spaceremove(request):
+    return HttpResponse("new line remove")
+
+def charcount(request):
+    return HttpResponse("char count")
