@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 #Default argument request is required
 def index(request):
-    return render(request, 'index.html')
+    params = {'name':'harry','place':'Mars'}
+    return render(request, 'index.html',params)
     # return HttpResponse("hello") # Can pass text, html
 
 def removepunc(request):
